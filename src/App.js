@@ -1,11 +1,17 @@
+import { Routes, Route } from "react-router-dom";
+
 import "./App.css";
-import Header from "./components/header";
+import Layout from "./layout/Layout";
+import LoginPage from "./components/loginPage";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-    </div>
+    <Layout>
+      <Routes>
+        <Route path="/">XD</Route>
+        <Route path="/loginPage" element={<LoginPage />}></Route>
+      </Routes>
+    </Layout>
   );
 }
 
