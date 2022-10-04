@@ -1,3 +1,35 @@
+.container {
+  background-image: url(../assets/starting_photo.jpg);
+  display: flex;
+  background-size: cover;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-grow: 1;
+}
+
 .getStartButton {
+  display: flex;
   color: black;
+  text-transform: uppercase;
+  border: solid 3px white;
+  border-radius: 20px;
+  padding: 10px 30px;
+  background-color: rgba(300, 300, 300, 0.3);
+  transition: all 0.2s ease-out;
+}
+
+.getStartButton:hover {
+  background-color: rgba(200, 200, 200, 0.85);
+}
+
+.startText {
+  background-color: rgba(300, 300, 300, 0.35);
+  display: flex;
+  justify-self: end;
+  align-self: flex-start;
+  font-size: 50px;
+  text-transform: uppercase;
+  margin-left: 10%;
 }

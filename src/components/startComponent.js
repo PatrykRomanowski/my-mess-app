@@ -1,5 +1,7 @@
 import React from "react";
 
+import startPhoto from "../assets/starting_photo.jpg";
+
 import classes from "./startComponent.module.css";
 
 const StartComponent = (props) => {
@@ -8,10 +10,12 @@ const StartComponent = (props) => {
   };
   return (
     <>
-      <p>Start</p>
-      <button className={classes.getStartButton} onClick={startHandler}>
-        Get started
-      </button>
+      <div className={classes.container}>
+        <p className={classes.startText}>Your order is here...</p>
+        <button className={classes.getStartButton} onClick={startHandler}>
+          Get started
+        </button>
+      </div>
     </>
   );
 };
