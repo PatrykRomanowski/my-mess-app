@@ -3,10 +3,16 @@ import { Link } from "react-router-dom";
 
 import classes from "./header.module.css";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { authAction } from "../store/auth-context";
 
 const Header = () => {
   const isAuth = useSelector((state) => state.auth.auth);
+  const dispatch = useDispatch();
+
+  const loginHandler = () => {
+    dispatch(authAction.login());
+  };
 
   return (
     <>
@@ -18,7 +24,7 @@ const Header = () => {
           </Link>
         )}
         <Link to="/loginPage">
-          <button> Login </button>
+          <button onClick={loginHandler}> Login </button>
         </Link>
       </div>
     </>
