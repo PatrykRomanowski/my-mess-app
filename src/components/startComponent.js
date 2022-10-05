@@ -1,7 +1,5 @@
 import React from "react";
 
-import startPhoto from "../assets/starting_photo.jpg";
-
 import classes from "./startComponent.module.css";
 
 const StartComponent = (props) => {
