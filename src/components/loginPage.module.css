@@ -1,0 +1,41 @@
+.signInContainer {
+  display: flex;
+  flex-direction: row;
+  color: black;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  margin: 0%;
+}
+
+.signIn {
+  color: #1976d2;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+
+.signInInfo {
+  margin: 0;
+}
+
+.signInBaner {
+  color: #1976d2;
+  text-transform: uppercase;
+  font-size: 22px;
+}
+
+.formButton {
+  color: white;
+  width: 40%;
+  border: solid 2px white;
+  background-color: #1976d2;
+  text-transform: uppercase;
+  margin-top: 4rem;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
