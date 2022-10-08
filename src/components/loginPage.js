@@ -17,7 +17,6 @@ const LoginPage = () => {
 
     const enteredPassword = passwordInput.current.value;
     const enteredLogin = loginInput.current.value;
-    const enetredName = nameInput.current.value;
 
     let url;
     let authenticationError;
@@ -51,14 +50,15 @@ const LoginPage = () => {
       .then((date) => {
         console.log("login success");
         console.log(date);
-        // if (signInRegisterToogle) {
-        //   const postURL =
-        //     dataBaseURL + "myUsers/" + "/library.json";
-        //   const response = fetch(postURL, {
-        //     method: "PUT",
-        //     body: JSON.stringify({ name: enetredName }),
-        //   });
-        // }
+        if (signInRegisterToogle) {
+          const enetredName = nameInput.current.value;
+
+          const postURL = dataBaseURL + "myUsers/" + date.localId + ".json";
+          const response = fetch(postURL, {
+            method: "PUT",
+            body: JSON.stringify({ name: enetredName, library: "myBoxes" }),
+          });
+        }
       })
       .catch((err) => alert(err.message));
   };
