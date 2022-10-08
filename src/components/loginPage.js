@@ -1,12 +1,26 @@
 import React, { useRef, useState } from "react";
 
+import { useDispatch } from "react-redux";
+
+import { useNavigate } from "react-router-dom";
+
+import { authAction } from "../store/auth-context";
+import { dataMessAction } from "../store/mess-data-context";
+
 import classes from "./loginPage.module.css";
 import dataBaseURL from "../consts/firebase";
 
 import TextField from "@mui/material/TextField";
 
+const readUserName = () => {};
+
 const LoginPage = () => {
   const [signInRegisterToogle, setSignInRegisterToogle] = useState(false);
+  const [userId, setUserId] = useState();
+
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const nameInput = useRef();
   const loginInput = useRef();
@@ -50,7 +64,9 @@ const LoginPage = () => {
       .then((date) => {
         console.log("login success");
         console.log(date);
+
         if (signInRegisterToogle) {
+          // registered handler
           const enetredName = nameInput.current.value;
 
           const postURL = dataBaseURL + "myUsers/" + date.localId + ".json";
@@ -58,9 +74,27 @@ const LoginPage = () => {
             method: "PUT",
             body: JSON.stringify({ name: enetredName, library: "myBoxes" }),
           });
+          navigate("/");
+          navigate("/loginPage");
+          setSignInRegisterToogle(false);
+
+          const id = date.localId;
+          setUserId(id);
+        } else {
+          const token = date.idToken; //login handler
+          dispatch(authAction.login({ token }));
+          dispatch(dataMessAction.addUserId({ date: date.localId }));
+
+          navigate("/");
         }
       })
+
       .catch((err) => alert(err.message));
+
+    // const response = await fetch(sendURL);
+    // const responseData = await response.json();
+
+    // console.log(responseData);
   };
 
   const signInHandler = () => {
