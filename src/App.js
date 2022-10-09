@@ -4,6 +4,7 @@ import "./App.css";
 import StartComponent from "./components/startComponent";
 import Layout from "./layout/Layout";
 import LoginPage from "./components/loginPage";
+import UserProfile from "./components/userProfile";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<p>XD</p>}></Route>
         <Route path="/loginPage" element={<LoginPage />}></Route>
+        <Route path="/userProfile" element={<UserProfile />}></Route>
       </Routes>
     </Layout>
   );

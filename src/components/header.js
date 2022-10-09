@@ -53,7 +53,7 @@ const Header = () => {
         )}
 
         {isAuth && (
-          <Link to="/myProfile">
+          <Link to="/userProfile">
             <button>My Profile</button>
           </Link>
         )}

@@ -12,8 +12,6 @@ import dataBaseURL from "../consts/firebase";
 
 import TextField from "@mui/material/TextField";
 
-const readUserName = () => {};
-
 const LoginPage = () => {
   const [signInRegisterToogle, setSignInRegisterToogle] = useState(false);
   const [userId, setUserId] = useState();
