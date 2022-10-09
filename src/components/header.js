@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import classes from "./header.module.css";
 
 import { useSelector, useDispatch } from "react-redux";
 import { authAction } from "../store/auth-context";
+import { dataMessAction } from "../store/mess-data-context";
+
+import firebaseURL from "../consts/firebase";
 
 const Header = () => {
   const isAuth = useSelector((state) => state.auth.auth);
@@ -12,6 +15,20 @@ const Header = () => {
   const userId = useSelector((state) => state.dataMess.userId);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (userId !== null) {
+      const userURL = firebaseURL + "myUsers/" + userId + ".json";
+
+      const fetchName = async () => {
+        const response = await fetch(userURL);
+        const responseData = await response.json();
+        dispatch(dataMessAction.addUserName({ name: responseData.name }));
+        console.log(responseData);
+      };
+      fetchName();
+    }
+  }, [userId]);
 
   console.log(userName);
 
@@ -21,14 +38,20 @@ const Header = () => {
 
   const logoutHandler = () => {
     dispatch(authAction.logout());
+    dispatch(dataMessAction.logoutHandler());
   };
 
   return (
     <>
       <div className={classes.headerContainer}>
         <p className={classes.paragraph}>My mess App</p>
-        <p>{userId}</p>
-        <p className={classes.userWalcome}>Hi, </p>
+        {userName !== null && (
+          <div className={classes.welcomeName}>
+            <p className={classes.userWalcome}>Hi, </p>
+            <p className={classes.userName}>{userName}</p>
+          </div>
+        )}
+
         {isAuth && (
           <Link to="/myProfile">
             <button>My Profile</button>
