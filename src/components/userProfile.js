@@ -1,8 +1,9 @@
-import * as React from "react";
+import React, { useState } from "react";
+
 import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import CssBaseline from "@mui/material/CssBaseline";
-import AppBar from "@mui/material/AppBar";
+// import Drawer from "@mui/material/Drawer";
+// import CssBaseline from "@mui/material/CssBaseline";
+// import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
@@ -17,31 +18,39 @@ import MailIcon from "@mui/icons-material/Mail";
 import classes from "./userProfile.module.css";
 
 const UserProfile = () => {
+  const [activeButton, setActiveButton] = useState(null);
   const drawerWidth = 240;
 
   return (
     <>
-      <Box sx={{ display: "flex" }}>
-        {/* <Drawer
-          sx={{
-            width: drawerWidth,
-            flexShrink: 0,
-            "& .MuiDrawer-paper": {
-              width: drawerWidth,
-              boxSizing: "border-box",
-            },
-          }}
-          variant="permanent"
-          anchor="left"
-        > */}
-        {/* <Toolbar /> */}
+      <Box
+        sx={{
+          display: "flex",
+          bgcolor: "#ff80ab",
+          marginTop: "40px",
+          height: "100%",
+        }}
+      >
         <Divider />
         <Box>
-          {" "}
-          <List>
+          <List sx={{ width: "200px" }}>
             {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
+              <ListItem
+                key={text}
+                disablePadding
+                sx={{
+                  bgcolor: "#ff80ab",
+                  // width:
+                  //   text === activeButton
+                  //     ? `calc(100% + 0px)`
+                  //     : `calc(100% + 0px)`,
+                }}
+              >
+                {activeButton === text && <div className={classes.bar}></div>}
+                <ListItemButton
+                  onClick={() => setActiveButton(text)}
+                  sx={{ color: text === activeButton ? "#f50057" : "white" }}
+                >
                   <ListItemIcon>
                     {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                   </ListItemIcon>

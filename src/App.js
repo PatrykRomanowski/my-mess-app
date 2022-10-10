@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<p>XD</p>}></Route>
         <Route path="/loginPage" element={<LoginPage />}></Route>
-        <Route path="/userProfile" element={<UserProfile />}></Route>
+        {/* <Route path="/userProfile" element={<UserProfile />}></Route> */}
       </Routes>
     </Layout>
   );
