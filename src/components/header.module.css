@@ -8,10 +8,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  color: var(--primary-color);
 }
 
 .userName {
   font-size: 18px;
+  color: var(--primary-color);
   margin: 8px;
 }
 
@@ -23,9 +25,8 @@
   align-items: center;
   width: 100%;
   min-height: 60px;
-  background-color: var(--primary-color);
+  background-color: white;
   font-size: 30px;
-  color: white;
 }
 
 .paragraph {
@@ -34,11 +35,13 @@
   text-transform: uppercase;
   padding-left: 10%;
   flex-grow: 1;
+  color: var(--primary-color);
 }
 
 button {
   font: inherit;
-  background-color: transparent;
+  /* background-color: transparent; */
+  background-color: var(--primary-color);
   border: 1px solid white;
   color: white;
   font-weight: bold;
@@ -51,4 +54,5 @@ button {
 
 .userWalcome {
   font-size: 15px;
+  color: var(--primary-color);
 }
