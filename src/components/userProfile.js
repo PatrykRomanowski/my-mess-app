@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 
+import { Link } from "react-router-dom";
+
+// import { Link as MaterialLink } from "@material-ui/core/Link";
+
 import Box from "@mui/material/Box";
 // import Drawer from "@mui/material/Drawer";
 // import CssBaseline from "@mui/material/CssBaseline";
@@ -29,32 +33,49 @@ const UserProfile = () => {
           bgcolor: "#ff80ab",
           marginTop: "40px",
           height: "100%",
+          width: "200px",
         }}
       >
         <Divider />
         <Box>
           <List sx={{ width: "200px" }}>
-            {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+            {[
+              { name: "my boxes", link: "/myBoxes", key: "1" },
+              { name: "add Box", link: "/addBox", key: "2" },
+            ].map((text, index) => (
               <ListItem
-                key={text}
+                key={index}
                 disablePadding
                 sx={{
                   bgcolor: "#ff80ab",
-                  // width:
-                  //   text === activeButton
-                  //     ? `calc(100% + 0px)`
-                  //     : `calc(100% + 0px)`,
                 }}
+                button
+                component={Link}
+                to={text.link}
               >
-                {activeButton === text && <div className={classes.bar}></div>}
+                {activeButton === text.name && (
+                  <div className={classes.bar}></div>
+                )}
                 <ListItemButton
-                  onClick={() => setActiveButton(text)}
-                  sx={{ color: text === activeButton ? "#f50057" : "white" }}
+                  onClick={() => setActiveButton(text.name)}
+                  sx={{
+                    color: text.name === activeButton ? "#f50057" : "white",
+                    underline: "none",
+                    textTransform: "none",
+                  }}
+                  underline="none"
                 >
                   <ListItemIcon>
                     {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                   </ListItemIcon>
-                  <ListItemText primary={text} />
+                  <ListItemText
+                    sx={{ textTransform: "uppercase", underline: "none" }}
+                    underline="none"
+
+                    // primary={text.name}
+                  >
+                    {text.name}
+                  </ListItemText>
                 </ListItemButton>
               </ListItem>
             ))}
@@ -75,7 +96,7 @@ const UserProfile = () => {
         </Box>
 
         {/* </Drawer> */}
-        <Box
+        {/* <Box
           component="main"
           sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
         >
@@ -89,7 +110,7 @@ const UserProfile = () => {
             <div className={classes.box}></div>
             <div className={classes.box}></div>
           </Typography>
-        </Box>
+        </Box> */}
       </Box>
     </>
   );
