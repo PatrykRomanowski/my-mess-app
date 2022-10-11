@@ -1,0 +1,9 @@
+.dataContainer {
+  display: flex;
+}
+
+.main {
+  margin: 30px;
+  margin-top: 40px;
+  flex-grow: 1;
+}

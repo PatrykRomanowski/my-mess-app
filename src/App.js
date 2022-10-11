@@ -5,6 +5,8 @@ import StartComponent from "./components/startComponent";
 import Layout from "./layout/Layout";
 import LoginPage from "./components/loginPage";
 import UserProfile from "./components/userProfile";
+import MyBoxesComponent from "./components/dataBoxComponents/myBoxesComponent";
+import AddBoxComponent from "./components/dataBoxComponents/addBoxComponent";
 
 function App() {
   return (
@@ -12,6 +14,9 @@ function App() {
       <Routes>
         <Route path="/" element={<p>XD</p>}></Route>
         <Route path="/loginPage" element={<LoginPage />}></Route>
+        <Route path="/myBoxes" element={<MyBoxesComponent />}></Route>
+        <Route path="/addBox" element={<AddBoxComponent />}></Route>
+
         {/* <Route path="/userProfile" element={<UserProfile />}></Route> */}
       </Routes>
     </Layout>
