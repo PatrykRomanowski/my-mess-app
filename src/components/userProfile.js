@@ -33,15 +33,16 @@ const UserProfile = () => {
           bgcolor: "#ff80ab",
           marginTop: "40px",
           height: "100%",
-          width: "200px",
+          width: "240px",
         }}
       >
         <Divider />
         <Box>
-          <List sx={{ width: "200px" }}>
+          <List sx={{ width: "240px" }}>
             {[
-              { name: "my boxes", link: "/myBoxes", key: "1" },
-              { name: "add Box", link: "/addBox", key: "2" },
+              { name: "my boxes", link: "/myBoxes" },
+              { name: "add Box", link: "/addBox" },
+              { name: "search item", link: "/searchItem" },
             ].map((text, index) => (
               <ListItem
                 key={index}
