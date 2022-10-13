@@ -15,7 +15,7 @@ form {
 
 .formButton {
   color: white;
-  width: 40%;
+  width: 60%;
   border: solid 2px white;
   background-color: #1976d2;
   text-transform: uppercase;
@@ -26,3 +26,9 @@ form {
 .formButton:hover {
   opacity: 0.8;
 }
+
+@media (max-width: 1024px) {
+  .formButton {
+    width: 100%;
+  }
+} ;

@@ -12,7 +12,15 @@ const AddBoxComponent = () => {
   const boxNameInput = useRef();
   const userId = useSelector((state) => state.dataMess.userId);
 
-  const textFieldStyle = { margin: 1, width: "40%", fontFamily: "arial" };
+  const textFieldStyle = {
+    margin: 1,
+    width: "100%",
+    fontFamily: "arial",
+    ["@media (min-width:1024px)"]: {
+      // eslint-disable-line no-useless-computed-key
+      width: "60%",
+    },
+  };
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();

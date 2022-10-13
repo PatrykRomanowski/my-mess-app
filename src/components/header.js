@@ -5,7 +5,7 @@ import classes from "./header.module.css";
 
 import { useSelector, useDispatch } from "react-redux";
 import { authAction } from "../store/auth-context";
-import { dataMessAction } from "../store/mess-data-context";
+import { userDataMessAction } from "../store/mess-data-context";
 
 import firebaseURL from "../consts/firebase";
 
@@ -23,7 +23,7 @@ const Header = () => {
       const fetchName = async () => {
         const response = await fetch(userURL);
         const responseData = await response.json();
-        dispatch(dataMessAction.addUserName({ name: responseData.name }));
+        dispatch(userDataMessAction.addUserName({ name: responseData.name }));
         console.log(responseData);
       };
       fetchName();
@@ -38,7 +38,7 @@ const Header = () => {
 
   const logoutHandler = () => {
     dispatch(authAction.logout());
-    dispatch(dataMessAction.logoutHandler());
+    dispatch(userDataMessAction.logoutHandler());
   };
 
   return (

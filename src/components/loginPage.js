@@ -5,7 +5,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { authAction } from "../store/auth-context";
-import { dataMessAction } from "../store/mess-data-context";
+import { userDataMessAction } from "../store/mess-data-context";
+import { dataItemsActions } from "../store/items-data-context";
 
 import classes from "./loginPage.module.css";
 import dataBaseURL from "../consts/firebase";
@@ -14,7 +15,7 @@ import TextField from "@mui/material/TextField";
 
 const LoginPage = () => {
   const [signInRegisterToogle, setSignInRegisterToogle] = useState(false);
-  const [userId, setUserId] = useState();
+  // const [userId, setUserId] = useState();
 
   const navigate = useNavigate();
 
@@ -72,16 +73,19 @@ const LoginPage = () => {
             method: "PUT",
             body: JSON.stringify({ name: enetredName, library: "myBoxes" }),
           });
+          console.log("działa");
+          dispatch(dataItemsActions.initialState({ userId: date.localId }));
           navigate("/");
           navigate("/loginPage");
           setSignInRegisterToogle(false);
 
-          const id = date.localId;
-          setUserId(id);
+          // const id = date.localId;
+          // setUserId(id);
         } else {
           const token = date.idToken; //login handler
           dispatch(authAction.login({ token }));
-          dispatch(dataMessAction.addUserId({ date: date.localId }));
+          dispatch(userDataMessAction.addUserId({ date: date.localId }));
+          dispatch(dataItemsActions.initialState({ userId: date.localId }));
 
           navigate("/");
         }

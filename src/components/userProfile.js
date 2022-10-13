@@ -1,16 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import { Link } from "react-router-dom";
 
-// import { Link as MaterialLink } from "@material-ui/core/Link";
-
 import Box from "@mui/material/Box";
-// import Drawer from "@mui/material/Drawer";
-// import CssBaseline from "@mui/material/CssBaseline";
-// import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -19,11 +13,40 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 
+import { dataItemsActions } from "../store/items-data-context";
+
+import firebaseURL from "../consts/firebase";
+
 import classes from "./userProfile.module.css";
 
 const UserProfile = () => {
   const [activeButton, setActiveButton] = useState(null);
-  const drawerWidth = 240;
+
+  const dispatch = useDispatch();
+
+  const auth = useSelector((state) => state.auth.auth);
+  const userId = useSelector((state) => state.dataMess.userId);
+  // const drawerWidth = 240;
+
+  useEffect(() => {
+    const userURL = firebaseURL + "myUsers/" + userId + ".json";
+
+    console.log(userId);
+
+    const fetchName = async () => {
+      const response = await fetch(userURL);
+      const responseData = await response.json();
+
+      console.log(responseData);
+      dispatch(
+        dataItemsActions.initialState({
+          boxes: responseData.boxes,
+          boxesCounter: responseData.boxCounter,
+        })
+      );
+    };
+    fetchName();
+  }, [auth]);
 
   return (
     <>

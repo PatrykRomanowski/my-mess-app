@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const dataMessContext = createSlice({
+const userDataMessContext = createSlice({
   name: "data",
   initialState: {
     userId: null,
@@ -23,6 +23,6 @@ const dataMessContext = createSlice({
   },
 });
 
-export const dataMessAction = dataMessContext.actions;
+export const userDataMessAction = userDataMessContext.actions;
 
-export default dataMessContext;
+export default userDataMessContext;
