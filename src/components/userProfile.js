@@ -37,11 +37,20 @@ const UserProfile = () => {
       const response = await fetch(userURL);
       const responseData = await response.json();
 
+      const responseMyData = [];
+
+      for (const key in responseData.boxes) {
+        responseMyData.push({
+          id: key,
+          boxName: responseData.boxes[key].box,
+        });
+      }
+
       console.log(responseData);
       dispatch(
         dataItemsActions.initialState({
-          boxes: responseData.boxes,
-          boxesCounter: responseData.boxCounter,
+          boxes: responseMyData,
+          boxesCounter: responseData.boxCounter.boxCounter,
         })
       );
     };

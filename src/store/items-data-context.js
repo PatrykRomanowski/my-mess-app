@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const dataItemsContext = createSlice({
   name: "dataItems",
   initialState: {
-    boxes: [],
+    boxes: [{}],
     boxCounter: 0,
   },
 
@@ -14,6 +14,8 @@ const dataItemsContext = createSlice({
 
       state.boxes = action.payload.boxes;
       state.boxCounter = action.payload.boxesCounter;
+
+      console.log(state.boxes);
     },
 
     addBox(state, action) {},
