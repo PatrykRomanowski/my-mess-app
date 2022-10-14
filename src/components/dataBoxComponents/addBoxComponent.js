@@ -5,11 +5,14 @@ import { useSelector } from "react-redux";
 import firebaseURL from "../../consts/firebase";
 
 import TextField from "@mui/material/TextField";
+import Card from "../../layout/Card";
 
 import classes from "./addBoxComponent.module.css";
 
 const AddBoxComponent = () => {
   const boxNameInput = useRef();
+  const boxPlaceInput = useRef();
+
   const userId = useSelector((state) => state.dataMess.userId);
 
   const textFieldStyle = {
@@ -28,6 +31,8 @@ const AddBoxComponent = () => {
     console.log(userId);
 
     const enteredBoxName = boxNameInput.current.value;
+    const enteredBoxPlace = boxPlaceInput.current.value;
+
     console.log(enteredBoxName);
 
     const getDataURL = firebaseURL + "myUsers/" + userId + ".json";
@@ -55,6 +60,7 @@ const AddBoxComponent = () => {
           method: "POST",
           body: JSON.stringify({
             box: enteredBoxName,
+            place: enteredBoxPlace,
           }),
         });
       });
@@ -71,6 +77,14 @@ const AddBoxComponent = () => {
           size="normal"
           sx={textFieldStyle}
           inputRef={boxNameInput}
+        ></TextField>
+        <TextField
+          id="outlined-basic"
+          label="box place"
+          variant="outlined"
+          size="normal"
+          sx={textFieldStyle}
+          inputRef={boxPlaceInput}
         ></TextField>
         <button className={classes.formButton}>add box</button>
       </form>
