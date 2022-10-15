@@ -1,4 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {
+  createSlice
+} from "@reduxjs/toolkit";
 
 const dataItemsContext = createSlice({
   name: "dataItems",
@@ -20,7 +22,10 @@ const dataItemsContext = createSlice({
 
     addBox(state, action) {},
 
-    deleteBox(state, action) {},
+    deleteBox(state, action) {
+      state.boxCounter = state.boxCounter - 1;
+      console.log(state.boxCounter);
+    },
   },
 });
 

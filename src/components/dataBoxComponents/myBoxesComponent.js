@@ -10,7 +10,9 @@ const MyBoxesComponent = () => {
   const numberOfBoxes = useSelector((state) => state.itemsData.boxCounter);
   const myBoxes = useSelector((state) => state.itemsData.boxes);
 
-  const MyBoxes = myBoxes.map((item) => <Card name={item.boxName} />);
+  const MyBoxes = myBoxes.map((item) => (
+    <Card id={item.id} name={item.boxName} />
+  ));
 
   // const gameList = myConsole.map((item) => (
   //   <ConsoleItem

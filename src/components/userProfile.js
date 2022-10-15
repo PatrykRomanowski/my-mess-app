@@ -70,11 +70,25 @@ const UserProfile = () => {
       >
         <Divider />
         <Box>
-          <List sx={{ width: "240px" }}>
+          <List
+            sx={{
+              width: "240px",
+            }}
+          >
+            {" "}
             {[
-              { name: "my boxes", link: "/myBoxes" },
-              { name: "add Box", link: "/addBox" },
-              { name: "search item", link: "/searchItem" },
+              {
+                name: "my boxes",
+                link: "/myBoxes",
+              },
+              {
+                name: "add Box",
+                link: "/addBox",
+              },
+              {
+                name: "search item",
+                link: "/searchItem",
+              },
             ].map((text, index) => (
               <ListItem
                 key={index}
@@ -87,8 +101,8 @@ const UserProfile = () => {
                 to={text.link}
               >
                 {activeButton === text.name && (
-                  <div className={classes.bar}></div>
-                )}
+                  <div className={classes.bar}> </div>
+                )}{" "}
                 <ListItemButton
                   onClick={() => setActiveButton(text.name)}
                   sx={{
@@ -99,52 +113,57 @@ const UserProfile = () => {
                   underline="none"
                 >
                   <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
+                    {" "}
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}{" "}
+                  </ListItemIcon>{" "}
                   <ListItemText
-                    sx={{ textTransform: "uppercase", underline: "none" }}
+                    sx={{
+                      textTransform: "uppercase",
+                      underline: "none",
+                    }}
                     underline="none"
 
                     // primary={text.name}
                   >
-                    {text.name}
-                  </ListItemText>
-                </ListItemButton>
+                    {text.name}{" "}
+                  </ListItemText>{" "}
+                </ListItemButton>{" "}
               </ListItem>
-            ))}
-          </List>
+            ))}{" "}
+          </List>{" "}
           <Divider />
           <List>
+            {" "}
             {["All mail", "Trash", "Spam"].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
+                    {" "}
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}{" "}
+                  </ListItemIcon>{" "}
+                  <ListItemText primary={text} />{" "}
+                </ListItemButton>{" "}
               </ListItem>
-            ))}
-          </List>
+            ))}{" "}
+          </List>{" "}
         </Box>
-
-        {/* </Drawer> */}
+        {/* </Drawer> */}{" "}
         {/* <Box
-          component="main"
-          sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
-        >
-          <Toolbar />
-          <Typography
-            sx={{
-              display: "flex",
-            }}
-          >
-            <div className={classes.box}></div>
-            <div className={classes.box}></div>
-            <div className={classes.box}></div>
-          </Typography>
-        </Box> */}
-      </Box>
+                component="main"
+                sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
+              >
+                <Toolbar />
+                <Typography
+                  sx={{
+                    display: "flex",
+                  }}
+                >
+                  <div className={classes.box}></div>
+                  <div className={classes.box}></div>
+                  <div className={classes.box}></div>
+                </Typography>
+              </Box> */}{" "}
+      </Box>{" "}
     </>
   );
 };
