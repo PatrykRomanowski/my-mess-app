@@ -5,7 +5,7 @@ import {
 const dataItemsContext = createSlice({
   name: "dataItems",
   initialState: {
-    boxes: [{}],
+    boxes: [],
     boxCounter: 0,
   },
 
@@ -17,14 +17,21 @@ const dataItemsContext = createSlice({
       state.boxes = action.payload.boxes;
       state.boxCounter = action.payload.boxesCounter;
 
-      console.log(state.boxes);
     },
 
-    addBox(state, action) {},
+    addBox(state, action) {
+      state.boxCounter = state.boxCounter + 1;
+      const newBoxesList = state.boxes.push(action.payload.newBox);
+      state.boxes = newBoxesList;
+
+    },
 
     deleteBox(state, action) {
       state.boxCounter = state.boxCounter - 1;
-      console.log(state.boxCounter);
+
+      const newListGame = state.boxes.filter((item) => item.id !== action.payload.id);
+      state.boxes = newListGame;
+
     },
   },
 });

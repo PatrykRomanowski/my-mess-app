@@ -1,8 +1,10 @@
 import React, { useRef } from "react";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import firebaseURL from "../../consts/firebase";
+
+import { dataItemsActions } from "../../store/items-data-context";
 
 import TextField from "@mui/material/TextField";
 import Card from "../../layout/Card";
@@ -12,6 +14,8 @@ import classes from "./addBoxComponent.module.css";
 const AddBoxComponent = () => {
   const boxNameInput = useRef();
   const boxPlaceInput = useRef();
+
+  const dispatch = useDispatch();
 
   const userId = useSelector((state) => state.dataMess.userId);
 
@@ -38,6 +42,8 @@ const AddBoxComponent = () => {
     const getDataURL = firebaseURL + "myUsers/" + userId + ".json";
     const putURL = firebaseURL + "myUsers/" + userId + "/boxCounter.json";
     const postURL = firebaseURL + "myUsers/" + userId + "/boxes.json";
+    const userURL = firebaseURL + "myUsers/" + userId + ".json";
+
     console.log(postURL);
 
     const newData = await fetch(getDataURL)
@@ -63,8 +69,32 @@ const AddBoxComponent = () => {
             place: enteredBoxPlace,
           }),
         });
+      })
+      .then(async () => {
+        const response = await fetch(userURL);
+        const responseData = await response.json();
+
+        const responseMyData = [];
+
+        for (const key in responseData.boxes) {
+          responseMyData.push({
+            id: key,
+            boxName: responseData.boxes[key].box,
+            boxPlace: responseData.boxes[key].place,
+          });
+        }
+
+        console.log(responseData);
+        dispatch(
+          dataItemsActions.initialState({
+            boxes: responseMyData,
+            boxesCounter: responseData.boxCounter.boxCounter,
+          })
+        );
+        // };
       });
     boxNameInput.current.value = "";
+    boxPlaceInput.current.value = "";
   };
 
   return (

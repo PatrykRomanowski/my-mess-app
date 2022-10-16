@@ -43,6 +43,7 @@ const UserProfile = () => {
         responseMyData.push({
           id: key,
           boxName: responseData.boxes[key].box,
+          boxPlace: responseData.boxes[key].place,
         });
       }
 
