@@ -20,6 +20,15 @@
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
 }
 
+.boxContainer {
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .footer {
   width: 100%;
   height: 15%;
@@ -48,4 +57,54 @@
   padding: 0;
   width: 15px;
   cursor: pointer;
+}
+
+.addItemBody {
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.newItemInputContainer {
+  display: flex;
+  justify-content: center;
+  align-self: flex-end;
+  flex-direction: column;
+  width: 100%;
+}
+
+.addItemButton {
+  text-transform: uppercase;
+  align-self: center;
+  padding: 5px;
+  cursor: pointer;
+  height: 10%;
+}
+.sliderIcon {
+  width: 17px;
+}
+
+.checkIcon {
+  width: 25px;
+  height: 25px;
+  align-self: center;
+  cursor: pointer;
+}
+
+.newItemInput {
+  display: flex;
+  align-self: center;
+  transition: all 0.2s ease-out;
+}
+
+.inputOpen {
+  opacity: 1;
+  transform: translateY(-3px);
+  z-index: 0;
+}
+
+.inputClose {
+  opacity: 0;
+  transform: translateY(20px);
+  z-index: -1;
 }

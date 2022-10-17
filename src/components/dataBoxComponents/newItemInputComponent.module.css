@@ -1,0 +1,16 @@
+.newItemInput {
+  align-self: center;
+  transition: all 0.2s ease-out;
+}
+
+.inputOpen {
+  opacity: 1;
+  transform: translateY(-3px);
+  z-index: 0;
+}
+
+.inputClose {
+  opacity: 0;
+  transform: translateY(20px);
+  z-index: -1;
+}

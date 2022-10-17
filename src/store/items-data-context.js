@@ -21,8 +21,7 @@ const dataItemsContext = createSlice({
 
     addBox(state, action) {
       state.boxCounter = state.boxCounter + 1;
-      const newBoxesList = state.boxes.push(action.payload.newBox);
-      state.boxes = newBoxesList;
+
 
     },
 
