@@ -31,8 +31,6 @@ const UserProfile = () => {
   useEffect(() => {
     const userURL = firebaseURL + "myUsers/" + userId + ".json";
 
-    console.log(userId);
-
     const fetchName = async () => {
       const response = await fetch(userURL);
       const responseData = await response.json();
@@ -44,6 +42,7 @@ const UserProfile = () => {
           id: key,
           boxName: responseData.boxes[key].box,
           boxPlace: responseData.boxes[key].place,
+          items: responseData.boxes[key].items,
         });
       }
 

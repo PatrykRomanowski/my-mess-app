@@ -37,8 +37,6 @@ const AddBoxComponent = () => {
     const enteredBoxName = boxNameInput.current.value;
     const enteredBoxPlace = boxPlaceInput.current.value;
 
-    console.log(enteredBoxName);
-
     const getDataURL = firebaseURL + "myUsers/" + userId + ".json";
     const putURL = firebaseURL + "myUsers/" + userId + "/boxCounter.json";
     const postURL = firebaseURL + "myUsers/" + userId + "/boxes.json";
@@ -81,6 +79,7 @@ const AddBoxComponent = () => {
             id: key,
             boxName: responseData.boxes[key].box,
             boxPlace: responseData.boxes[key].place,
+            items: responseData.boxes[key].items,
           });
         }
 

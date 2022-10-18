@@ -1,4 +1,13 @@
+.checkIcon {
+  width: 25px;
+  height: 25px;
+  align-self: center;
+  cursor: pointer;
+}
+
 .newItemInput {
+  display: flex;
+  flex-direction: row;
   align-self: center;
   transition: all 0.2s ease-out;
 }

@@ -30,8 +30,6 @@ const Header = () => {
     }
   }, [userId]);
 
-  console.log(userName);
-
   const loginHandler = () => {
     // dispatch(authAction.login());
   };

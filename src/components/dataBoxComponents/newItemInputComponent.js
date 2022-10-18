@@ -1,25 +1,43 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import TextField from "@mui/material/TextField";
 
 import classes from "./newItemInputComponent.module.css";
 
+import checkIcon from "../../assets/icons/check.png";
+
 const NewItemInputComponent = (props) => {
-  // let transformClass = "";
-  // if (props.show) {
-  //   transformClass = classes.inputOpen;
-  // } else {
-  //   transformClass = classes.inputClose;
-  // }
+  const refItem = useRef();
 
-  console.log("xd");
+  let transformClass = "";
+  if (props.show) {
+    transformClass = classes.inputOpen;
+  } else {
+    transformClass = classes.inputClose;
+  }
 
-  const textFieldStyle = { margin: 0.5, width: "95%", fontFamily: "arial" };
+  const textFieldStyle = { margin: 0.5, width: "85%", fontFamily: "arial" };
+
+  const addItemHandler = async (event) => {
+    event.preventDefault();
+    const enteredItem = refItem.current.value;
+    console.log(enteredItem);
+
+    const sendNewBox = await fetch(props.url, {
+      method: "POST",
+      body: JSON.stringify({
+        nameItem: enteredItem,
+      }),
+    });
+
+    refItem.current.value = "";
+  };
 
   return (
-    <div
-    //   className={`${classes.newItemInput}
-    // ${transformClass}`}
+    <form
+      onSubmit={addItemHandler}
+      className={`${classes.newItemInput}
+    ${transformClass}`}
     >
       <TextField
         id="outlined-basic"
@@ -27,9 +45,10 @@ const NewItemInputComponent = (props) => {
         variant="outlined"
         size="small"
         sx={textFieldStyle}
-        // inputRef={props.refName}
+        inputRef={refItem}
       ></TextField>
-    </div>
+      <img className={classes.checkIcon} src={checkIcon}></img>
+    </form>
   );
 };
 

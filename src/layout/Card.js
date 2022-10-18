@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import NewItemInputComponent from "../components/dataBoxComponents/newItemInputComponent";
@@ -13,21 +13,30 @@ import firebaseURL from "../consts/firebase";
 import { dataItemsActions } from "../store/items-data-context";
 
 const Card = (props) => {
+  console.log(props.itemsOfBox);
   const boxId = props.id;
 
   const [showInputtoogle, setShowInputToogle] = useState(false);
+  const [myItems, setMyItems] = useState([]);
+  const myItemsArray = [];
+
+  useEffect(() => {
+    for (const key in props.itemsOfBox) {
+      myItemsArray.push(props.itemsOfBox[key].nameItem);
+      console.log(key);
+      console.log(props.itemsOfBox[key].nameItem);
+    }
+    setMyItems(myItemsArray);
+    console.log(myItems);
+  }, []);
 
   const dispatch = useDispatch();
 
   const userId = useSelector((state) => state.dataMess.userId);
   const boxCounter = useSelector((state) => state.itemsData.boxCounter);
 
-  let transformClass = "";
-  if (showInputtoogle) {
-    transformClass = classes.inputOpen;
-  } else {
-    transformClass = classes.inputClose;
-  }
+  const sendItemURL =
+    firebaseURL + "myUsers/" + userId + "/boxes/" + boxId + "/items.json";
 
   const showInputHandler = () => {
     setShowInputToogle(!showInputtoogle);
@@ -66,22 +75,13 @@ const Card = (props) => {
       </div>
       <div className={classes.addItemBody}>
         <div className={classes.newItemInputContainer}>
-          {/* {showInputtoogle && <NewItemInputComponent show={showInputtoogle} />} */}
-          {/* <div className={classes.xxx}> */}
-          <div
-            className={`${classes.newItemInput}
-    ${transformClass}`}
-          >
-            <NewItemInputComponent show={showInputtoogle} />
-            <img className={classes.checkIcon} src={checkIcon}></img>
-          </div>
+          <NewItemInputComponent url={sendItemURL} show={showInputtoogle} />
 
-          {/* </div> */}
           <div className={classes.addItemButton} onClick={showInputHandler}>
             {showInputtoogle ? (
               <img className={classes.sliderIcon} src={slideIcon}></img>
             ) : (
-              "add item"
+              <div> add item</div>
             )}
           </div>
         </div>

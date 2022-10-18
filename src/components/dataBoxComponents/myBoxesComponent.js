@@ -12,19 +12,13 @@ const MyBoxesComponent = () => {
   console.log(myBoxes);
 
   const MyBoxes = myBoxes.map((item) => (
-    <Card id={item.id} place={item.boxPlace} name={item.boxName} />
+    <Card
+      id={item.id}
+      place={item.boxPlace}
+      name={item.boxName}
+      itemsOfBox={item.items}
+    />
   ));
-
-  // const gameList = myConsole.map((item) => (
-  //   <ConsoleItem
-  //     key={item.id}
-  //     consoleID={item.id}
-  //     console={item}
-  //     moreInfoHandler={moreInfoHandler}
-  //     hiddenMoreInfo={hiddenMoreInfo}
-  //     deleteConsole={deleteConsole}
-  //   />
-  // ));
 
   return <div className={classes.boxesContainer}>{MyBoxes}</div>;
 };

@@ -100,7 +100,6 @@ const LoginPage = () => {
   };
 
   const signInHandler = () => {
-    console.log("działa na klik");
     setSignInRegisterToogle(true);
   };
 
