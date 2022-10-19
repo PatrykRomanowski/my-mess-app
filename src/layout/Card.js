@@ -62,6 +62,15 @@ const Card = (props) => {
     );
   };
 
+  const boxItem = myItems.map((item) => {
+    console.log(item);
+    return (
+      <div>
+        <p>{item}</p>
+      </div>
+    );
+  });
+
   return (
     <div className={classes.card}>
       <div className={classes.header}>
@@ -74,6 +83,7 @@ const Card = (props) => {
         ></img>
       </div>
       <div className={classes.addItemBody}>
+        {boxItem}
         <div className={classes.newItemInputContainer}>
           <NewItemInputComponent url={sendItemURL} show={showInputtoogle} />
 
