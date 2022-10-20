@@ -18,9 +18,13 @@ const Card = (props) => {
 
   const [showInputtoogle, setShowInputToogle] = useState(false);
   const [myItems, setMyItems] = useState([]);
-  const myItemsArray = [];
+  //   const myItemsArray = [];
+
+  console.log(myItems);
 
   useEffect(() => {
+    const myItemsArray = [];
+
     for (const key in props.itemsOfBox) {
       myItemsArray.push(props.itemsOfBox[key].nameItem);
       console.log(key);
@@ -64,11 +68,7 @@ const Card = (props) => {
 
   const boxItem = myItems.map((item) => {
     console.log(item);
-    return (
-      <div>
-        <p>{item}</p>
-      </div>
-    );
+    return <p className={classes.itemName}>{item}</p>;
   });
 
   return (
@@ -83,9 +83,13 @@ const Card = (props) => {
         ></img>
       </div>
       <div className={classes.addItemBody}>
-        {boxItem}
+        <div className={classes.itemContainer}>{boxItem}</div>
         <div className={classes.newItemInputContainer}>
-          <NewItemInputComponent url={sendItemURL} show={showInputtoogle} />
+          <NewItemInputComponent
+            url={sendItemURL}
+            show={showInputtoogle}
+            boxId={boxId}
+          />
 
           <div className={classes.addItemButton} onClick={showInputHandler}>
             {showInputtoogle ? (

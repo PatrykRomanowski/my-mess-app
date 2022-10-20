@@ -25,6 +25,17 @@ const dataItemsContext = createSlice({
       );
       state.boxes = newListGame;
     },
+
+    addItem(state, action) {
+      const index = state.boxes.findIndex(
+        (item) => item.id === action.payload.boxId
+      );
+
+      state.boxes[index].boxes = action.payload.boxId;
+      console.log(index);
+      console.log("add item");
+      console.log(action.payload.newData);
+    },
   },
 });
 

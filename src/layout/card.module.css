@@ -61,6 +61,8 @@
 
 .addItemBody {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   flex-grow: 1;
   width: 100%;
 }
@@ -70,6 +72,19 @@
   align-self: flex-end;
   flex-direction: column;
   width: 100%;
+  margin-bottom: 2px;
+}
+
+.itemName {
+  margin: 0;
+  padding: 0;
+}
+
+.itemContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-transform: uppercase;
 }
 
 .addItemButton {

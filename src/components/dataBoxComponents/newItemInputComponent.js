@@ -1,5 +1,9 @@
 import React, { useRef } from "react";
 
+import { useDispatch, useSelector } from "react-redux";
+
+import { dataItemsActions } from "../../store/items-data-context";
+
 import TextField from "@mui/material/TextField";
 
 import classes from "./newItemInputComponent.module.css";
@@ -7,7 +11,10 @@ import classes from "./newItemInputComponent.module.css";
 import checkIcon from "../../assets/icons/check.png";
 
 const NewItemInputComponent = (props) => {
+  const myBoxes = useSelector((state) => state.itemsData.boxes);
+
   const refItem = useRef();
+  const dispatch = useDispatch();
 
   let transformClass = "";
   if (props.show) {
@@ -28,6 +35,17 @@ const NewItemInputComponent = (props) => {
       body: JSON.stringify({
         nameItem: enteredItem,
       }),
+    }).then(async () => {
+      const refreshData = await fetch(props.url);
+      const responseData = await refreshData.json();
+
+      console.log(responseData);
+
+      console.log(myBoxes);
+      dispatch(
+        dataItemsActions.addItem({ newData: responseData, boxId: props.boxId })
+      );
+      console.log(myBoxes);
     });
 
     refItem.current.value = "";
