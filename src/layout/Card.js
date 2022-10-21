@@ -13,26 +13,29 @@ import firebaseURL from "../consts/firebase";
 import { dataItemsActions } from "../store/items-data-context";
 
 const Card = (props) => {
-  console.log(props.itemsOfBox);
+  // console.log(props.itemsOfBox);
   const boxId = props.id;
 
   const [showInputtoogle, setShowInputToogle] = useState(false);
   const [myItems, setMyItems] = useState([]);
+  const [refreshData, setRefreshData] = useState([]);
+
+  // const boxes = useSelector((state) => state.itemsData.boxes);
   //   const myItemsArray = [];
 
-  console.log(myItems);
+  // console.log(myItems);
 
   useEffect(() => {
     const myItemsArray = [];
 
     for (const key in props.itemsOfBox) {
       myItemsArray.push(props.itemsOfBox[key].nameItem);
-      console.log(key);
-      console.log(props.itemsOfBox[key].nameItem);
+      // console.log(key);
+      // console.log(props.itemsOfBox[key].nameItem);
     }
     setMyItems(myItemsArray);
-    console.log(myItems);
-  }, []);
+    // console.log(myItems);
+  }, [refreshData]);
 
   const dispatch = useDispatch();
 
@@ -44,6 +47,10 @@ const Card = (props) => {
 
   const showInputHandler = () => {
     setShowInputToogle(!showInputtoogle);
+  };
+
+  const getRefreshData = () => {
+    setRefreshData(!refreshData);
   };
 
   const deleteBoxHandler = async () => {
@@ -67,7 +74,7 @@ const Card = (props) => {
   };
 
   const boxItem = myItems.map((item) => {
-    console.log(item);
+    // console.log(item);
     return <p className={classes.itemName}>{item}</p>;
   });
 
@@ -89,6 +96,7 @@ const Card = (props) => {
             url={sendItemURL}
             show={showInputtoogle}
             boxId={boxId}
+            refreshData={getRefreshData}
           />
 
           <div className={classes.addItemButton} onClick={showInputHandler}>

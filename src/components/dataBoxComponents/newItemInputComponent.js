@@ -41,11 +41,12 @@ const NewItemInputComponent = (props) => {
 
       console.log(responseData);
 
-      console.log(myBoxes);
+      // console.log(myBoxes);
       dispatch(
         dataItemsActions.addItem({ newData: responseData, boxId: props.boxId })
       );
-      console.log(myBoxes);
+      // console.log(myBoxes);
+      props.refreshData();
     });
 
     refItem.current.value = "";

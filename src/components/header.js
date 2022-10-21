@@ -24,7 +24,7 @@ const Header = () => {
         const response = await fetch(userURL);
         const responseData = await response.json();
         dispatch(userDataMessAction.addUserName({ name: responseData.name }));
-        console.log(responseData);
+        // console.log(responseData);
       };
       fetchName();
     }

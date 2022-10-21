@@ -1,4 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {
+  createSlice
+} from "@reduxjs/toolkit";
 
 const dataItemsContext = createSlice({
   name: "dataItems",
@@ -31,7 +33,7 @@ const dataItemsContext = createSlice({
         (item) => item.id === action.payload.boxId
       );
 
-      state.boxes[index].boxes = action.payload.boxId;
+      state.boxes[index].items = action.payload.newData;
       console.log(index);
       console.log("add item");
       console.log(action.payload.newData);

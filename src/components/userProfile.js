@@ -46,7 +46,7 @@ const UserProfile = () => {
         });
       }
 
-      console.log(responseData);
+      // console.log(responseData);
       dispatch(
         dataItemsActions.initialState({
           boxes: responseMyData,
