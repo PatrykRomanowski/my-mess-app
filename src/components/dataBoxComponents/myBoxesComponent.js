@@ -9,7 +9,6 @@ import classes from "./myBoxesComponent.module.css";
 const MyBoxesComponent = () => {
   const numberOfBoxes = useSelector((state) => state.itemsData.boxCounter);
   const myBoxes = useSelector((state) => state.itemsData.boxes);
-  console.log(myBoxes);
 
   const MyBoxes = myBoxes.map((item) => (
     <Card

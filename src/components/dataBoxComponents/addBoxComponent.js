@@ -42,12 +42,9 @@ const AddBoxComponent = () => {
     const postURL = firebaseURL + "myUsers/" + userId + "/boxes.json";
     const userURL = firebaseURL + "myUsers/" + userId + ".json";
 
-    console.log(postURL);
-
     const newData = await fetch(getDataURL)
       .then(async (response) => {
         const responseData = await response.json();
-        console.log(responseData);
         return responseData;
       })
       .then(async (responseData) => {

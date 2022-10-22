@@ -34,9 +34,7 @@ const dataItemsContext = createSlice({
       );
 
       state.boxes[index].items = action.payload.newData;
-      console.log(index);
-      console.log("add item");
-      console.log(action.payload.newData);
+
     },
   },
 });

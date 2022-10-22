@@ -73,9 +73,18 @@ const Card = (props) => {
     );
   };
 
+  const itemCounter = myItems.length;
+  let actualItemCounter = 0;
+
   const boxItem = myItems.map((item) => {
-    // console.log(item);
-    return <p className={classes.itemName}>{item}</p>;
+    actualItemCounter++;
+    console.log(actualItemCounter);
+    if (
+      itemCounter - 5 < actualItemCounter &&
+      itemCounter >= actualItemCounter
+    ) {
+      return <p className={classes.itemName}>{item}</p>;
+    }
   });
 
   return (
