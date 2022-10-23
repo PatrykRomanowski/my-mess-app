@@ -6,6 +6,10 @@ const SearchItem = () => {
   return (
     <div>
       <div>Search item page</div>
+      <div>
+        Search your item
+        <input></input>
+      </div>
     </div>
   );
 };
