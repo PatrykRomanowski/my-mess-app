@@ -1,0 +1,13 @@
+.boxes {
+  width: 200px;
+  height: 200px;
+  background-color: yellow;
+  margin: 10px;
+}
+
+.boxesContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}

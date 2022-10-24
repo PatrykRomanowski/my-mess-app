@@ -1,0 +1,12 @@
+.dataContainer {
+  display: flex;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+  margin-top: 40px;
+  flex-grow: 1;
+}

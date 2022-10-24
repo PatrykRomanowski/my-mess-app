@@ -1,0 +1,11 @@
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: aqua;
+}
+
+.bar {
+  width: 4px;
+  height: 50px;
+  background-color: #f50057;
+}
