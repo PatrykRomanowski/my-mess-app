@@ -1,0 +1,19 @@
+.searchItemContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.containerWithFoundItem {
+}
+
+.foundItem {
+}
+
+.nameOfFoundItem {
+}
+
+.placeOfFoundItem {
+}
+
+.boxNameOfFoundItem {
+}

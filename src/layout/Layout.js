@@ -16,7 +16,7 @@ const Layout = (props) => {
   const dispatch = useDispatch();
 
   const startAppHandler = () => {
-    dispatch(authAction.checkLogin(localStorage.getItem("token")));
+    // dispatch(authAction.checkLogin(localStorage.getItem("token")));
 
     setGetStart(!getStart);
   };
