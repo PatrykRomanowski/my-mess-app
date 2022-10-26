@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -6,7 +6,23 @@ import classes from "./searchItemComponent.module.css";
 
 const SearchItem = () => {
   const [myItems, setMyItems] = useState([]);
+  const [enteredValue, setEnteredValue] = useState("");
+  const [sortedArray, setSortedArray] = useState([]);
   const selectMyItems = useSelector((state) => state.itemsData.boxes);
+
+  const itemList = myItems.map((item) => (
+    <div className={classes.foundItem}>
+      <div className={classes.nameOfFoundItem}>
+        <p>{item.itemName}</p>
+      </div>
+      <div className={classes.placeOfFoundItem}></div>
+      <div className={classes.boxNameOfFoundItem}></div>
+    </div>
+  ));
+
+  const searchItemHandler = (event) => {
+    setEnteredValue(event.target.value);
+  };
 
   useEffect(() => {
     const newArray = [];
@@ -23,28 +39,32 @@ const SearchItem = () => {
       }
     }
     setMyItems(newArray);
+
+    console.log(selectMyItems);
   }, []);
 
+  useEffect(() => {
+    console.log(enteredValue);
+    const newArray = [];
+
+    myItems.forEach((element) => {
+      if (element.itemName.includes("a")) {
+      }
+    });
+
+    // const sortedItems = myItems.filter((item) => item.includes("12"));
+
+    // console.log(sortedItems);
+  }, [enteredValue]);
+
   console.log(myItems);
-
-  const itemList = myItems.map((item) => (
-    <div className={classes.foundItem}>
-      <div className={classes.nameOfFoundItem}>
-        <p>{item.itemName}</p>
-      </div>
-      <div className={classes.placeOfFoundItem}></div>
-      <div className={classes.boxNameOfFoundItem}></div>
-    </div>
-  ));
-
-  console.log(selectMyItems);
 
   return (
     <div className={classes.searchItemContainer}>
       <div>Search item page</div>
       <div>
         Search your item
-        <input></input>
+        <input onChange={searchItemHandler}></input>
       </div>
       <div className={classes.containerWithFoundItem}>{itemList}</div>
     </div>

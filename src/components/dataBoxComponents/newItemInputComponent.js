@@ -28,7 +28,7 @@ const NewItemInputComponent = (props) => {
   const addItemHandler = async (event) => {
     event.preventDefault();
     const enteredItem = refItem.current.value;
-    console.log(enteredItem);
+    // console.log(enteredItem);
 
     const sendNewBox = await fetch(props.url, {
       method: "POST",
