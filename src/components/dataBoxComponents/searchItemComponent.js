@@ -10,7 +10,7 @@ const SearchItem = () => {
   const [sortedArray, setSortedArray] = useState([]);
   const selectMyItems = useSelector((state) => state.itemsData.boxes);
 
-  const itemList = myItems.map((item) => (
+  const itemList = sortedArray.map((item) => (
     <div className={classes.foundItem}>
       <div className={classes.nameOfFoundItem}>
         <p>{item.itemName}</p>
@@ -48,8 +48,17 @@ const SearchItem = () => {
     const newArray = [];
 
     myItems.forEach((element) => {
-      if (element.itemName.includes("a")) {
+      if (element.itemName.includes(enteredValue)) {
+        const newSearchItem = {
+          itemName: element.itemName,
+          itemPlace: element.itemPlace,
+          itemBoxName: element.itemBoxName,
+        };
+        newArray.push(newSearchItem);
       }
+
+      setSortedArray(newArray);
+      console.log(sortedArray);
     });
 
     // const sortedItems = myItems.filter((item) => item.includes("12"));
