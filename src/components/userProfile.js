@@ -10,8 +10,8 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+// import InboxIcon from "@mui/icons-material/MoveToInbox";
+// import MailIcon from "@mui/icons-material/Mail";
 
 import { dataItemsActions } from "../store/items-data-context";
 
@@ -114,7 +114,7 @@ const UserProfile = () => {
                 >
                   <ListItemIcon>
                     {" "}
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}{" "}
+                    {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}{" "} */}
                   </ListItemIcon>{" "}
                   <ListItemText
                     sx={{
@@ -139,7 +139,7 @@ const UserProfile = () => {
                 <ListItemButton>
                   <ListItemIcon>
                     {" "}
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}{" "}
+                    {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}{" "} */}
                   </ListItemIcon>{" "}
                   <ListItemText primary={text} />{" "}
                 </ListItemButton>{" "}

@@ -4,11 +4,15 @@ import { useSelector, useDispatch } from "react-redux";
 
 import classes from "./searchItemComponent.module.css";
 
+import TextField from "@mui/material/TextField";
+
 const SearchItem = () => {
   const [myItems, setMyItems] = useState([]);
   const [enteredValue, setEnteredValue] = useState("");
   const [sortedArray, setSortedArray] = useState([]);
   const selectMyItems = useSelector((state) => state.itemsData.boxes);
+
+  const loginInput = useRef();
 
   const itemList = sortedArray.map((item) => (
     <div className={classes.foundItem}>
@@ -21,7 +25,9 @@ const SearchItem = () => {
   ));
 
   const searchItemHandler = (event) => {
-    setEnteredValue(event.target.value);
+    // setEnteredValue(event.target.value);
+    const enteredSearchItem = loginInput.current.value;
+    setEnteredValue(enteredSearchItem);
   };
 
   useEffect(() => {
@@ -67,14 +73,26 @@ const SearchItem = () => {
   }, [enteredValue]);
 
   console.log(myItems);
+  const textFieldStyle = {
+    margin: 1,
+    width: "80%",
+    fontFamily: "arial",
+    marginTop: "3rem",
+  };
 
   return (
     <div className={classes.searchItemContainer}>
-      <div>Search item page</div>
-      <div>
-        Search your item
-        <input onChange={searchItemHandler}></input>
-      </div>
+      <form onChange={searchItemHandler}>
+        <TextField
+          id="outlined-basic"
+          label={"Search your item"}
+          variant="outlined"
+          size="normal"
+          sx={textFieldStyle}
+          inputRef={loginInput}
+        ></TextField>
+        {/* <input onChange={searchItemHandler}></input> */}
+      </form>
       <div className={classes.containerWithFoundItem}>{itemList}</div>
     </div>
   );

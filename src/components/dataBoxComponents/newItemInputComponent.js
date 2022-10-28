@@ -13,7 +13,7 @@ import checkIcon from "../../assets/icons/check.png";
 const NewItemInputComponent = (props) => {
   const myBoxes = useSelector((state) => state.itemsData.boxes);
 
-  const refItem = useRef();
+  const itemInput = useRef();
   const dispatch = useDispatch();
 
   let transformClass = "";
@@ -27,7 +27,7 @@ const NewItemInputComponent = (props) => {
 
   const addItemHandler = async (event) => {
     event.preventDefault();
-    const enteredItem = refItem.current.value;
+    const enteredItem = itemInput.current.value;
     // console.log(enteredItem);
 
     const sendNewBox = await fetch(props.url, {
@@ -49,7 +49,7 @@ const NewItemInputComponent = (props) => {
       props.refreshData();
     });
 
-    refItem.current.value = "";
+    itemInput.current.value = "";
   };
 
   return (
@@ -64,7 +64,7 @@ const NewItemInputComponent = (props) => {
         variant="outlined"
         size="small"
         sx={textFieldStyle}
-        inputRef={refItem}
+        inputRef={itemInput}
       ></TextField>
       <img className={classes.checkIcon} src={checkIcon}></img>
     </form>

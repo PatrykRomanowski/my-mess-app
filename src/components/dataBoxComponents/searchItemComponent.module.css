@@ -1,19 +1,32 @@
 .searchItemContainer {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
 }
 
 .containerWithFoundItem {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 3rem;
 }
 
 .foundItem {
+  display: flex;
+  width: 200px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  margin: 10px;
+  justify-content: center;
 }
 
 .nameOfFoundItem {
+  display: flex;
 }
 
 .placeOfFoundItem {
+  display: flex;
 }
 
 .boxNameOfFoundItem {
+  display: flex;
 }
