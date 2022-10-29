@@ -17,10 +17,17 @@ const SearchItem = () => {
   const itemList = sortedArray.map((item) => (
     <div className={classes.foundItem}>
       <div className={classes.nameOfFoundItem}>
+        <p className={classes.descriptionItem}>name item:</p>
         <p>{item.itemName}</p>
       </div>
-      <div className={classes.placeOfFoundItem}></div>
-      <div className={classes.boxNameOfFoundItem}></div>
+      <div className={classes.placeOfFoundItem}>
+        <p className={classes.descriptionItem}>place:</p>
+        <p>{item.itemPlace}</p>
+      </div>
+      <div className={classes.boxNameOfFoundItem}>
+        <p className={classes.descriptionItem}>box name:</p>
+        <p>{item.itemBoxName}</p>
+      </div>
     </div>
   ));
 
