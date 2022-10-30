@@ -89,6 +89,10 @@ const UserProfile = () => {
                 name: "search item",
                 link: "/searchItem",
               },
+              {
+                name: "delete item",
+                link: "/deleteItem",
+              },
             ].map((text, index) => (
               <ListItem
                 key={index}

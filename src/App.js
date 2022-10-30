@@ -8,6 +8,7 @@ import UserProfile from "./components/userProfile";
 import MyBoxesComponent from "./components/dataBoxComponents/myBoxesComponent";
 import AddBoxComponent from "./components/dataBoxComponents/addBoxComponent";
 import SearchItem from "./components/dataBoxComponents/searchItemComponent";
+import DeleteItem from "./components/dataBoxComponents/deleteItemComponent";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
 
         <Route path="/addBox" element={<AddBoxComponent />}></Route>
         <Route path="/searchItem" element={<SearchItem />}></Route>
+        <Route path="/deleteItem" element={<DeleteItem />}></Route>
 
         {/* <Route path="/userProfile" element={<UserProfile />}></Route> */}
       </Routes>
