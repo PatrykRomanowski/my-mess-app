@@ -1,0 +1,9 @@
+.deleteIcon {
+  color: white;
+  width: 30px;
+  filter: invert(100%);
+}
+
+.itemContainer {
+  display: flex;
+}
