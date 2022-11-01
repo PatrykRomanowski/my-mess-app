@@ -1,11 +1,39 @@
-.card {
+.itemToBeRemovedCard {
   display: flex;
   justify-content: space-between;
-  flex-direction: column;
-  height: 24rem;
+  flex-direction: row;
+  height: 3rem;
   margin: 0.5rem;
   border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   align-items: center;
-  width: 250px;
+  width: 300px;
+}
+
+.itemsToBeRomovedContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.itemNameForDelete {
+  margin: 0;
+  padding: 0;
+}
+
+.deleteItemButton {
+  margin-right: 5px;
+  padding: 10px;
+}
+
+.deleteIcon {
+  color: white;
+  width: 15px;
+  filter: invert(100%);
+  margin: 0 5px;
+}
+
+.itemContainer {
+  display: flex;
 }
