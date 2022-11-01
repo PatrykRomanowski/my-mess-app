@@ -1,6 +1,4 @@
-import {
-  createSlice
-} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const dataItemsContext = createSlice({
   name: "dataItems",
@@ -28,13 +26,29 @@ const dataItemsContext = createSlice({
       state.boxes = newListGame;
     },
 
+    deleteItem(state, action) {
+      console.log("XD");
+      console.log(action.payload.itemId);
+
+      const boxIndex = state.boxes.findIndex(
+        (item) => item.id === action.payload.boxId
+      );
+
+      const listItem = state.boxes[boxIndex].items.filter(
+        (item) => item.id !== action.payload.itemId
+      );
+
+      console.log(listItem);
+
+      console.log(boxIndex);
+    },
+
     addItem(state, action) {
       const index = state.boxes.findIndex(
         (item) => item.id === action.payload.boxId
       );
 
       state.boxes[index].items = action.payload.newData;
-
     },
   },
 });

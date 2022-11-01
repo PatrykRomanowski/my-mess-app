@@ -14,7 +14,7 @@ const DeleteItem = () => {
   const showItemsForDelete = myBoxes.map((item) => (
     <div className={classes.itemContainer}>
       <div>{item.boxName}</div>
-      <CardOfDeleteItem items={item.items} />
+      <CardOfDeleteItem items={item.items} boxId={item.id} />
     </div>
   ));
 
