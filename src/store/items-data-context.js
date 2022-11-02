@@ -34,13 +34,7 @@ const dataItemsContext = createSlice({
         (item) => item.id === action.payload.boxId
       );
 
-      const listItem = state.boxes[boxIndex].items.filter(
-        (item) => item.id !== action.payload.itemId
-      );
-
-      console.log(listItem);
-
-      console.log(boxIndex);
+      state.boxes[boxIndex].items = action.payload.newData;
     },
 
     addItem(state, action) {

@@ -11,6 +11,7 @@ import { dataItemsActions } from "../store/items-data-context";
 
 const CardOfDeleteItem = (props) => {
   const userId = useSelector((state) => state.dataMess.userId);
+  const myBoxes = useSelector((state) => state.itemsData.boxes);
 
   const dispatch = useDispatch();
 
@@ -26,7 +27,7 @@ const CardOfDeleteItem = (props) => {
     setItems(myItemsArray);
     console.log(myItemsArray);
     // console.log(myItems);
-  }, []);
+  }, [myBoxes]);
 
   const deleteItemHandler = async (click, itemId) => {
     const deleteURL =
@@ -40,7 +41,8 @@ const CardOfDeleteItem = (props) => {
       ".json";
 
     const deleteBox = await fetch(deleteURL, { method: "DELETE" });
-    dispatch(dataItemsActions.deleteItem({ boxId, itemId }));
+    // dispatch(dataItemsActions.deleteItem({ boxId, itemId }));
+    props.deleteItemHandler({ boxId, itemId });
   };
 
   const itemsList = items.map((item) => {
