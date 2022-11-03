@@ -7,7 +7,7 @@
   border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   align-items: center;
-  width: 300px;
+  width: 240px;
 }
 
 .itemsToBeRomovedContainer {
@@ -18,13 +18,22 @@
 }
 
 .itemNameForDelete {
+  display: flex;
+  flex-grow: 1;
   margin: 0;
-  padding: 0;
+  padding: 5px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-align: center;
 }
 
 .deleteItemButton {
+  display: flex;
   margin-right: 5px;
   padding: 10px;
+  max-height: 90%;
 }
 
 .deleteIcon {
