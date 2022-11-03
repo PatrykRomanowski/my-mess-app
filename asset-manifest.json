@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/my-mess-app/static/css/main.2367afbb.css",
-    "main.js": "/my-mess-app/static/js/main.3cb1131a.js",
+    "main.css": "/my-mess-app/static/css/main.c0e50143.css",
+    "main.js": "/my-mess-app/static/js/main.506f8962.js",
     "static/media/starting_photo.jpg": "/my-mess-app/static/media/starting_photo.f89cdca086bc7e78c0df.jpg",
     "index.html": "/my-mess-app/index.html",
-    "main.2367afbb.css.map": "/my-mess-app/static/css/main.2367afbb.css.map",
-    "main.3cb1131a.js.map": "/my-mess-app/static/js/main.3cb1131a.js.map"
+    "main.c0e50143.css.map": "/my-mess-app/static/css/main.c0e50143.css.map",
+    "main.506f8962.js.map": "/my-mess-app/static/js/main.506f8962.js.map"
   },
   "entrypoints": [
-    "static/css/main.2367afbb.css",
-    "static/js/main.3cb1131a.js"
+    "static/css/main.c0e50143.css",
+    "static/js/main.506f8962.js"
   ]
 }
