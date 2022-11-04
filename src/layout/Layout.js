@@ -11,6 +11,8 @@ import classes from "./layout.module.css";
 
 const Layout = (props) => {
   const [getStart, setGetStart] = useState(false);
+  const [showMyProfle, setShowMyProfile] = useState(true);
+
   const isAuth = useSelector((state) => state.auth.auth);
 
   const dispatch = useDispatch();
@@ -21,14 +23,23 @@ const Layout = (props) => {
     setGetStart(!getStart);
   };
 
+  const showMyProfileHandler = () => {
+    console.log("XD");
+    setShowMyProfile(!showMyProfle);
+  };
+
   return (
     <>
-      {!getStart && <StartComponent startAppHandler={startAppHandler} />}
-      {getStart && <Header />}
-      <div className={classes.dataContainer}>
-        {isAuth && <UserProfile />}
-        {getStart && <main className={classes.main}>{props.children}</main>}
-      </div>
+      {!getStart && showMyProfle && (
+        <StartComponent startAppHandler={startAppHandler} />
+      )}
+      {getStart && <Header showMyProfile={showMyProfileHandler} />}
+      {showMyProfle && (
+        <div className={classes.dataContainer}>
+          {isAuth && <UserProfile />}
+          {getStart && <main className={classes.main}>{props.children}</main>}
+        </div>
+      )}
     </>
   );
 };

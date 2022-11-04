@@ -5,6 +5,7 @@
 }
 
 .bar {
+  position: fixed;
   width: 4px;
   height: 50px;
   background-color: #f50057;

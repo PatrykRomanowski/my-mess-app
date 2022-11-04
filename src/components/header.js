@@ -9,7 +9,7 @@ import { userDataMessAction } from "../store/mess-data-context";
 
 import firebaseURL from "../consts/firebase";
 
-const Header = () => {
+const Header = (props) => {
   const isAuth = useSelector((state) => state.auth.auth);
   const userName = useSelector((state) => state.dataMess.userName);
   const userId = useSelector((state) => state.dataMess.userId);
@@ -51,7 +51,7 @@ const Header = () => {
         )}
 
         {isAuth && (
-          <Link to="/userProfile">
+          <Link to="/myBoxes">
             <button>My Profile</button>
           </Link>
         )}

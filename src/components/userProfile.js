@@ -64,8 +64,9 @@ const UserProfile = () => {
           display: "flex",
           bgcolor: "#ff80ab",
           marginTop: "40px",
-          height: "100%",
+          height: "calc(100vh - 100px)",
           width: "240px",
+          position: "fixed",
         }}
       >
         <Divider />
@@ -75,7 +76,6 @@ const UserProfile = () => {
               width: "240px",
             }}
           >
-            {" "}
             {[
               {
                 name: "my boxes",
