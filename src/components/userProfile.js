@@ -63,7 +63,7 @@ const UserProfile = () => {
         sx={{
           display: "flex",
           bgcolor: "#ff80ab",
-          marginTop: "40px",
+          marginTop: "120px",
           height: "calc(100vh - 100px)",
           width: "240px",
           position: "fixed",

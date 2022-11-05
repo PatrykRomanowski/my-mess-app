@@ -10,6 +10,7 @@
   flex-direction: row;
   align-self: center;
   transition: all 0.2s ease-out;
+  margin-top: 100px;
 }
 
 .inputOpen {
