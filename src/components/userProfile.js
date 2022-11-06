@@ -106,7 +106,7 @@ const UserProfile = () => {
               >
                 {activeButton === text.name && (
                   <div className={classes.bar}> </div>
-                )}{" "}
+                )}
                 <ListItemButton
                   onClick={() => setActiveButton(text.name)}
                   sx={{
@@ -117,9 +117,8 @@ const UserProfile = () => {
                   underline="none"
                 >
                   <ListItemIcon>
-                    {" "}
                     {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}{" "} */}
-                  </ListItemIcon>{" "}
+                  </ListItemIcon>
                   <ListItemText
                     sx={{
                       textTransform: "uppercase",
@@ -129,45 +128,53 @@ const UserProfile = () => {
 
                     // primary={text.name}
                   >
-                    {text.name}{" "}
-                  </ListItemText>{" "}
-                </ListItemButton>{" "}
+                    {text.name}
+                  </ListItemText>
+                </ListItemButton>
               </ListItem>
-            ))}{" "}
-          </List>{" "}
+            ))}
+          </List>
           <Divider />
           <List>
-            {" "}
-            {["All mail", "Trash", "Spam"].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {" "}
-                    {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}{" "} */}
-                  </ListItemIcon>{" "}
-                  <ListItemText primary={text} />{" "}
-                </ListItemButton>{" "}
-              </ListItem>
-            ))}{" "}
-          </List>{" "}
-        </Box>
-        {/* </Drawer> */}{" "}
-        {/* <Box
-                component="main"
-                sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
+            {[
+              { name: "Stats", link: "/statsItem" },
+              { name: "Stats2", link: "/statsItem" },
+            ].map((text, index) => (
+              <ListItem
+                key={text.name}
+                disablePadding
+                sx={{
+                  bgcolor: "#ff80ab",
+                }}
+                button
+                component={Link}
+                to={text.link}
               >
-                <Toolbar />
-                <Typography
+                {activeButton === text.name && (
+                  <div className={classes.bar}> </div>
+                )}
+                <ListItemButton
+                  onClick={() => setActiveButton(text.name)}
                   sx={{
-                    display: "flex",
+                    color: text.name === activeButton ? "#f50057" : "white",
+                    underline: "none",
+                    textTransform: "none",
                   }}
+                  underline="none"
                 >
-                  <div className={classes.box}></div>
-                  <div className={classes.box}></div>
-                  <div className={classes.box}></div>
-                </Typography>
-              </Box> */}{" "}
-      </Box>{" "}
+                  <ListItemIcon>
+                    {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}{" "} */}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={text.name}
+                    sx={{ textTransform: "uppercase" }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+      </Box>
     </>
   );
 };
