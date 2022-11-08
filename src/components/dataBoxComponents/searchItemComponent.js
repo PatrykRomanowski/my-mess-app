@@ -40,7 +40,6 @@ const SearchItem = () => {
   useEffect(() => {
     const newArray = [];
     for (const key in selectMyItems) {
-      console.log(selectMyItems[key].items);
       for (const item in selectMyItems[key].items) {
         // console.log(selectMyItems[key].items[item].nameItem);
         const newItem = {
@@ -52,8 +51,6 @@ const SearchItem = () => {
       }
     }
     setMyItems(newArray);
-
-    console.log(selectMyItems);
   }, []);
 
   useEffect(() => {
@@ -71,7 +68,6 @@ const SearchItem = () => {
       }
 
       setSortedArray(newArray);
-      console.log(sortedArray);
     });
 
     // const sortedItems = myItems.filter((item) => item.includes("12"));

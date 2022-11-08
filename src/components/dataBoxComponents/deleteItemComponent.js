@@ -17,11 +17,6 @@ const DeleteItem = () => {
   const dispatch = useDispatch();
 
   const deleteItemHandler = async (props) => {
-    console.log("działa na klik");
-    console.log(props.itemId);
-    console.log(props.boxId);
-    console.log(myBoxes);
-
     const URL =
       firebaseURL +
       "myUsers/" +
@@ -33,7 +28,6 @@ const DeleteItem = () => {
     const refreshData = await fetch(URL);
     const responseData = await refreshData.json();
 
-    console.log(responseData);
     dispatch(
       dataItemsActions.deleteItem({
         newData: responseData,
@@ -41,8 +35,6 @@ const DeleteItem = () => {
       })
     );
   };
-
-  console.log(myBoxes);
 
   const showItemsForDelete = myBoxes.map((item) => (
     <div className={classes.itemContainer}>

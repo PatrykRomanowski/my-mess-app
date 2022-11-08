@@ -25,8 +25,6 @@ const CardOfDeleteItem = (props) => {
       myItemsArray.push({ name: props.items[key].nameItem, id: key });
     }
     setItems(myItemsArray);
-    console.log(myItemsArray);
-    // console.log(myItems);
   }, [myBoxes]);
 
   const deleteItemHandler = async (click, itemId) => {
@@ -46,7 +44,6 @@ const CardOfDeleteItem = (props) => {
   };
 
   const itemsList = items.map((item) => {
-    console.log(item.name);
     return (
       <div className={classes.itemToBeRemovedCard}>
         <div className={classes.itemNameForDelete}>{item.name}</div>
