@@ -2,16 +2,19 @@ import React from "react";
 
 import classes from "./Bar.module.css";
 
-const Bar = () => {
+const Bar = (props) => {
+  console.log(props.counter);
+  console.log(props.place);
+  console.log(props.allItemsCounter);
+
   return (
     <div className={classes.barContainer}>
       <div
         className={classes.barValue}
         style={{
           color: "red",
-          width: "90%",
-          height: "100%",
           backgroundColor: "black",
+          width: "90%",
         }}
       ></div>
     </div>
