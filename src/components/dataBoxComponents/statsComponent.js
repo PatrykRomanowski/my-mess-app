@@ -16,9 +16,11 @@ const StatsComponent = () => {
 
   useEffect(() => {
     let newArrayForPlace = [{ boxPlace: "biuro", counter: 0 }];
-    let newCounter = 0;
+    let AllItemCounter = 0;
 
     for (let i = 0; i < myBoxes.length; i++) {
+      let newCounter = 0;
+
       const itemNameIndex = newArrayForPlace.findIndex(
         (item) => item.boxPlace == myBoxes[i].boxPlace
       );
@@ -30,6 +32,7 @@ const StatsComponent = () => {
           boxPlace: myBoxes[i].boxPlace,
           counter: newCounter,
         });
+        AllItemCounter = AllItemCounter + newCounter;
       } else {
         for (const key in myBoxes[i].items) {
           newCounter++;
@@ -40,12 +43,13 @@ const StatsComponent = () => {
           boxPlace: newArrayForPlace[itemNameIndex].boxPlace,
           counter: newValueCounter,
         };
+        AllItemCounter = AllItemCounter + newCounter;
       }
 
       console.log(itemNameIndex);
-      const newAllCounter = counterAllItems + newCounter;
-      setCounterAllItems(newAllCounter);
+
       setItemsforStatsOfPlaces(newArrayForPlace);
+      setCounterAllItems(AllItemCounter);
       console.log(itemsForStatsOfPlaces);
     }
   }, []);

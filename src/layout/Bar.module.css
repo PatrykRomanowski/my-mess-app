@@ -9,3 +9,14 @@
   height: 100%;
   background-color: black;
 }
+
+.statusBarContainer {
+  display: flex;
+}
+
+.barName {
+  text-align: end;
+  text-transform: uppercase;
+  margin: 10px;
+  width: 200px;
+}
