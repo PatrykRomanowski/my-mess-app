@@ -1,0 +1,11 @@
+.barContainer {
+  width: 100%;
+  height: 20px;
+  background-color: aqua;
+  margin-top: 10px;
+}
+
+.batValue {
+  height: 100%;
+  background-color: black;
+}

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 
+import Bar from "../../layout/Bar";
+
 import { useSelector } from "react-redux";
 
 import classes from "./statsComponent.module.css";
 
 const StatsComponent = () => {
-  const [itemCounter, setItemCounter] = useState([{}]);
+  const [itemsForStatsOfPlaces, setItemsforStatsOfPlaces] = useState([{}]);
   let counterAllItems = 0;
   const myBoxes = useSelector((state) => state.itemsData.boxes);
 
@@ -41,17 +43,20 @@ const StatsComponent = () => {
 
       console.log(itemNameIndex);
       counterAllItems = counterAllItems + newCounter;
+      setItemsforStatsOfPlaces(newArrayForPlace);
       console.log(counterAllItems);
-      console.log(newArrayForPlace);
+      console.log(itemsForStatsOfPlaces);
     }
   }, []);
 
-  myBoxes.forEach((item) => {});
-  console.log(myBoxes);
+  const statsForPlaces = itemsForStatsOfPlaces.map((item) => <Bar />);
   return (
-    <div>
-      <div className={classes.StatsComponentContainer}>XD</div>
-    </div>
+    <>
+      <div className={classes.StatsComponentContainer}>
+        <h2>Value for Places:</h2>
+        <div className={classes.containerForPlacesStats}>{statsForPlaces}</div>
+      </div>
+    </>
   );
 };
 
