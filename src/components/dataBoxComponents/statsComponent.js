@@ -5,15 +5,17 @@ import { useSelector } from "react-redux";
 import classes from "./statsComponent.module.css";
 
 const StatsComponent = () => {
-  const [itemCounter, setItemCounter] = useState([{ boxPlace: "biuro" }]);
+  const [itemCounter, setItemCounter] = useState([{}]);
   let counterAllItems = 0;
   const myBoxes = useSelector((state) => state.itemsData.boxes);
 
   console.log(myBoxes.length);
 
   useEffect(() => {
+    let newArrayForPlace = [{ boxPlace: "biuro", counter: 0 }];
+
     for (let i = 0; i < myBoxes.length; i++) {
-      const itemNameIndex = itemCounter.findIndex(
+      const itemNameIndex = newArrayForPlace.findIndex(
         (item) => item.boxPlace == myBoxes[i].boxPlace
       );
       let newCounter = 0;
@@ -21,14 +23,26 @@ const StatsComponent = () => {
         for (const key in myBoxes[i].items) {
           newCounter++;
         }
+        newArrayForPlace.push({
+          boxPlace: myBoxes[i].boxPlace,
+          counter: newCounter,
+        });
       } else {
         for (const key in myBoxes[i].items) {
           newCounter++;
         }
+        const newValueCounter =
+          newCounter + newArrayForPlace[itemNameIndex].counter;
+        newArrayForPlace[itemNameIndex] = {
+          boxPlace: newArrayForPlace[itemNameIndex].boxPlace,
+          counter: newValueCounter,
+        };
       }
+
       console.log(itemNameIndex);
       counterAllItems = counterAllItems + newCounter;
       console.log(counterAllItems);
+      console.log(newArrayForPlace);
     }
   }, []);
 
