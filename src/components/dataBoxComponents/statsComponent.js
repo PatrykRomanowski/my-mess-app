@@ -8,6 +8,8 @@ import classes from "./statsComponent.module.css";
 
 const StatsComponent = () => {
   const [itemsForStatsOfPlaces, setItemsforStatsOfPlaces] = useState([{}]);
+  const [itemsForStatsOfBoxes, setItemsforStatsOfBoxes] = useState([{}]);
+
   const [counterAllItems, setCounterAllItems] = useState(0);
   // let counterAllItems = 0;
   const myBoxes = useSelector((state) => state.itemsData.boxes);
@@ -15,15 +17,42 @@ const StatsComponent = () => {
   console.log(myBoxes.length);
 
   useEffect(() => {
-    let newArrayForPlace = [{ boxPlace: "biuro", counter: 0 }];
+    let newArrayForPlace = [];
+    let newArreyForBox = [];
     let AllItemCounter = 0;
 
     for (let i = 0; i < myBoxes.length; i++) {
+      // searching box places
       let newCounter = 0;
 
       const itemNameIndex = newArrayForPlace.findIndex(
         (item) => item.boxPlace == myBoxes[i].boxPlace
       );
+
+      const boxNameIndex = newArreyForBox.findIndex(
+        (item) => item.boxName == myBoxes[i].boxName
+      );
+
+      if (boxNameIndex == -1) {
+        for (const key in myBoxes[i].items) {
+          newCounter++;
+        }
+        newArreyForBox.push({
+          boxName: myBoxes[i].boxName,
+          counter: newCounter,
+        });
+      } else {
+        for (const key in myBoxes[i].items) {
+          newCounter++;
+        }
+        const newValueCounter =
+          newCounter + newArreyForBox[boxNameIndex].counter;
+        newArreyForBox[boxNameIndex] = {
+          boxName: newArreyForBox[boxNameIndex].boxName,
+          counter: newValueCounter,
+        };
+      }
+
       if (itemNameIndex == -1) {
         for (const key in myBoxes[i].items) {
           newCounter++;
@@ -49,10 +78,13 @@ const StatsComponent = () => {
       console.log(itemNameIndex);
 
       setItemsforStatsOfPlaces(newArrayForPlace);
+      setItemsforStatsOfBoxes(newArreyForBox);
       setCounterAllItems(AllItemCounter);
-      console.log(itemsForStatsOfPlaces);
     }
   }, []);
+
+  console.log(itemsForStatsOfPlaces);
+  console.log(itemsForStatsOfBoxes);
 
   const statsForPlaces = itemsForStatsOfPlaces.map((item) => (
     <Bar

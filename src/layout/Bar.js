@@ -3,12 +3,12 @@ import React from "react";
 import classes from "./Bar.module.css";
 
 const Bar = (props) => {
-  console.log(props.counter);
-  console.log(props.allItemsCounter);
+  //   console.log(props.counter);
+  //   console.log(props.allItemsCounter);
   const width = props.counter;
 
   const widthBar = `${(width / props.allItemsCounter) * 100}%`;
-  console.log(widthBar);
+  //   console.log(widthBar);
 
   return (
     <div className={classes.statusBarContainer}>
