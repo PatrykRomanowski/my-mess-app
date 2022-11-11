@@ -12,7 +12,7 @@ const Bar = (props) => {
 
   return (
     <div className={classes.statusBarContainer}>
-      <div className={classes.barName}>{props.place}: </div>
+      <div className={classes.barName}>{props.statsName}: </div>
       <div className={classes.barContainer}>
         <div
           className={classes.barValue}
