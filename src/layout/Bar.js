@@ -17,11 +17,13 @@ const Bar = (props) => {
         <div
           className={classes.barValue}
           style={{
-            color: "red",
-            backgroundColor: "black",
+            color: "white",
+            backgroundColor: "#880e4f",
             width: `${widthBar}`,
           }}
-        ></div>
+        >
+          {props.counter}
+        </div>
       </div>
     </div>
   );
