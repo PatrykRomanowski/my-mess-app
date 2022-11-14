@@ -46,3 +46,27 @@
 .itemContainer {
   display: flex;
 }
+
+.fadeEnter {
+  opacity: 0;
+}
+
+.fadeEnterActive {
+  opacity: 1;
+  transition: all 4.6s ease-out;
+}
+
+.myExit {
+  opacity: 1;
+  transition: all 0.6s ease-out;
+}
+.myActiveExit {
+  opacity: 0;
+  background-color: aqua;
+  transition: all 0.6s ease-out;
+}
+.myDoneExit {
+  opacity: 0;
+  background-color: aqua;
+  transition: all 0.6s ease-out;
+}

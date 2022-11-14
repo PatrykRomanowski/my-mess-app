@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { CSSTransition, TransitionGroup } from "react-transition-group/";
 
 import classes from "./cardOfdeleteItem.module.css";
 
@@ -45,20 +46,44 @@ const CardOfDeleteItem = (props) => {
 
   const itemsList = items.map((item) => {
     return (
-      <div className={classes.itemToBeRemovedCard}>
-        <div className={classes.itemNameForDelete}>{item.name}</div>
-        <button
-          onClick={(click) => deleteItemHandler(click, item.id)}
-          className={classes.deleteItemButton}
-        >
-          usuń
-          <img className={classes.deleteIcon} src={deleteIcon}></img>
-        </button>
-      </div>
+      <CSSTransition
+        in={item.name}
+        timeout={1000}
+        mountOnEnter
+        unmountOnExit
+        classNames={{
+          enter: classes.myEnter,
+          enterActive: classes.myActiveEnter,
+          enterDone: classes.myDoneEnter,
+          exit: classes.myExit,
+          exitActive: classes.myActiveExit,
+          exitDone: classes.myDoneExit,
+        }}
+      >
+        <div className={classes.itemToBeRemovedCard}>
+          <div className={classes.itemNameForDelete}>{item.name}</div>
+          <button
+            onClick={(click) => deleteItemHandler(click, item.id)}
+            className={classes.deleteItemButton}
+          >
+            usuń
+            <img className={classes.deleteIcon} src={deleteIcon}></img>
+          </button>
+        </div>
+      </CSSTransition>
     );
   });
 
-  return <div className={classes.itemsToBeRomovedContainer}>{itemsList}</div>;
+  return (
+    <div className={classes.itemsToBeRomovedContainer}>
+      <TransitionGroup
+        component="div"
+        className={classes.itemsToBeRomovedContainer}
+      >
+        {itemsList}
+      </TransitionGroup>
+    </div>
+  );
 };
 
 export default CardOfDeleteItem;
