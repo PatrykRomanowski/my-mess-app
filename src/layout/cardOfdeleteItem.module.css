@@ -48,25 +48,31 @@
 }
 
 .fadeEnter {
-  opacity: 0;
 }
 
 .fadeEnterActive {
-  opacity: 1;
-  transition: all 4.6s ease-out;
 }
 
 .myExit {
-  opacity: 1;
-  transition: all 0.6s ease-out;
+  /* transition: opacity2 0.3s ease-out; */
 }
 .myActiveExit {
-  opacity: 0;
-  background-color: aqua;
-  transition: all 0.6s ease-out;
+  animation: opacity3 0.6s linear;
 }
 .myDoneExit {
-  opacity: 0;
-  background-color: aqua;
-  transition: all 0.6s ease-out;
+  /* transition: all 0.3s ease-out; */
+}
+
+@keyframes opacity3 {
+  0% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0.5;
+    transform: translateY(100%);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
 }

@@ -48,7 +48,7 @@ const CardOfDeleteItem = (props) => {
     return (
       <CSSTransition
         in={item.name}
-        timeout={1000}
+        timeout={300}
         mountOnEnter
         unmountOnExit
         classNames={{
