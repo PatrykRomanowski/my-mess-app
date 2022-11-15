@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState, useEffect, useRef } from "react";
+import { useSelector, useDispatch, ReactReduxContext } from "react-redux";
 import { CSSTransition, TransitionGroup } from "react-transition-group/";
 
 import classes from "./cardOfdeleteItem.module.css";
@@ -14,6 +14,8 @@ const CardOfDeleteItem = (props) => {
   const userId = useSelector((state) => state.dataMess.userId);
   const myBoxes = useSelector((state) => state.itemsData.boxes);
 
+  const nodeRef = useRef(null);
+
   const dispatch = useDispatch();
 
   const [items, setItems] = useState([{}]);
@@ -23,7 +25,10 @@ const CardOfDeleteItem = (props) => {
     const myItemsArray = [];
 
     for (const key in props.items) {
-      myItemsArray.push({ name: props.items[key].nameItem, id: key });
+      myItemsArray.push({
+        name: props.items[key].nameItem,
+        id: key,
+      });
     }
     setItems(myItemsArray);
   }, [myBoxes]);
@@ -47,10 +52,11 @@ const CardOfDeleteItem = (props) => {
   const itemsList = items.map((item) => {
     return (
       <CSSTransition
-        in={item.name}
+        // in={item.id}
         timeout={300}
         mountOnEnter
         unmountOnExit
+        // nodeRef={nodeRef}
         classNames={{
           enter: classes.myEnter,
           enterActive: classes.myActiveEnter,
@@ -60,7 +66,7 @@ const CardOfDeleteItem = (props) => {
           exitDone: classes.myDoneExit,
         }}
       >
-        <div className={classes.itemToBeRemovedCard}>
+        <div ref={nodeRef} className={classes.itemToBeRemovedCard}>
           <div className={classes.itemNameForDelete}>{item.name}</div>
           <button
             onClick={(click) => deleteItemHandler(click, item.id)}
